@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教室</title>
+    <link rel="stylesheet" href="bootstrap.min.css"> 
+    <style>
+        *{
+            padding: 0;
+            margin: 0px auto;
+        }
+        #father {
+            width: 365px;
+            height: 400px;
+            background-color: #fff;
+            margin: 50px auto;
+            border: 1px solid black;
+        }
+        #mean {
+            width: 363px;
+            
+            background-color: #fff;
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+        #btn {
+            padding: 3px 3px;
+            margin: 3px;
+        }
+    </style>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.js"></script>
+    <script>
+        window.onload=function(){
+            btn.onclick=function(){
+                var week=document.getElementById("week").value;
+                var day=document.getElementById("day").value;
+                var time=document.getElementById("time").value;
+                var building=document.getElementById("building").value;
+                week=parseInt(week);
+                day=parseInt(day);
+                time=parseInt(time);
+                building=parseInt(building);
+                if(building==0){
+                    getInformation(week,day,time);
+                }
+                function getInformation(w,d,t){
+                        axios.get('0.json')
+                            .then(function (response) {
+                                console.log(response.data[w][d][t]);
+                                
+                            document.getElementById("show").innerHTML=response.data[w][d][t];
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });  
+                }
+                if(building==1){
+                    getInformation1(week,day,time);
+                }
+                function getInformation1(w,d,t){
+                        axios.get('1.json')
+                            .then(function (response) {
+                                console.log(response.data[w][d][t]);
+                                document.getElementById("show").innerHTML=response.data[w][d][t];
+                            
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });  
+                }
+                if(building==2){
+                    getInformation2(week,day,time);
+                }
+                function getInformation2(w,d,t){
+                        axios.get('2.json')
+                            .then(function (response) {
+                                console.log(response.data[w][d][t]);
+                                document.getElementById("show").innerHTML=response.data[w][d][t];
+                            
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });  
+                }
+                if(building==3){
+                    getInformation3(week,day,time);
+                }
+                function getInformation3(w,d,t){
+                        axios.get('3.json')
+                            .then(function (response) {
+                                console.log(response.data[w][d][t]);
+                                document.getElementById("show").innerHTML=response.data[w][d][t];
+                            
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });  
+                }
+                if(building==4){
+                    getInformation4(week,day,time);
+                }
+                function getInformation4(w,d,t){
+                        axios.get('4.json')
+                            .then(function (response) {
+                                console.log(response.data[w][d][t]);
+                                document.getElementById("show").innerHTML=response.data[w][d][t];
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });  
+                }
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="father">
+        <div id="mean">
+           <form action="#" method="post">
+                <select name="week" id="week" >
+                    <option value="0">第1周</option>
+                    <option value="1">第2周</option>
+                    <option value="2">第3周</option>
+                    <option value="3">第4周</option>
+                    <option value="4">第5周</option>
+                    <option value="5">第6周</option>
+                    <option value="6">第7周</option>
+                    <option value="7">第8周</option>
+                    <option value="8">第9周</option>
+                    <option value="9">第10周</option>
+                    <option value="10">第11周</option>
+                    <option value="11">第12周</option>
+                    <option value="12">第13周</option>
+                    <option value="13">第14周</option>
+                    <option value="14">第15周</option>
+                    <option value="15">第16周</option>
+                    <option value="16">第17周</option>
+                    <option value="17">第18周</option>
+                    <option value="18">第19周</option>
+                    <option value="19">第20周</option>
+                </select>
+                <select name="day" method="post" id="day">
+                    <option value="0">星期1</option>
+                    <option value="1">星期2</option>
+                    <option value="2">星期3</option>
+                    <option value="3">星期4</option>
+                    <option value="4">星期5</option>
+                    <option value="5">星期6</option>
+                    <option value="6">星期7</option>
+                </select>
+                <select name="time" id="time">
+                    <option value="0">第1大节</option>
+                    <option value="1">第2大节</option>
+                    <option value="2">第3大节</option>
+                    <option value="3">第4大节</option>
+                    <option value="4">第5大节</option>
+                    <option value="5">第6大节</option>
+                </select>
+                <select name="building" id="building">
+                    <option value="0">树人楼（一教）</option>
+                    <option value="1">博明楼（五教）</option>
+                    <option value="2">诚意楼（七教）</option>
+                    <option value="3">德润楼（国际）</option>
+                    <option value="4">博文楼（文综）</option>
+                </select>
+               
+           </form>
+           <button id="btn" type="button" class="btn btn-outline-info">查询</button>
+        </div> 
+        <div id="show">
+
+        </div>
+    </div>
+</body>
+</html>
